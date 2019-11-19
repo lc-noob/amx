@@ -1,0 +1,49 @@
+.product>ul>li{
+	list-style:none;
+	padding:15px 0 15px 26px;
+	font-size:17px;
+	color:#313131;
+	border-left:1px solid #666;
+}
+.product>ul>li:first-of-type{
+	padding-top:30px;
+}
+.product>ul>li:last-of-type{
+	padding-bottom:14px;
+}
+.product>ul>li>p{
+	position:relative;
+}
+.product>ul>li>p>i{
+	position:absolute;
+	left:-26px;
+	top:50%;
+	width:10px;
+	height:1px;
+	background:#666;
+}
+.product>ul>li>p>span{
+	padding-left:26px;
+	font-size:13px;
+}
+/* product ul样式 */
+
+.product-img-div{
+	display:flex;
+	justify-content:space-between;
+}
+.product-img-div>div{
+	text-align:center;
+	width:212px;
+}
+.product-img-div>div>p{
+	font-size:14px;
+	color:#333;
+	padding:24px 0;
+}
+.product>.product-img-div>div{
+	margin:5px 0;
+}
+.product2{
+	flex-direction: column;
+}

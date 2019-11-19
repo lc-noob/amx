@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>新闻动态</title>
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css/news.css"/>
+		<link rel="stylesheet" type="text/css" href="css/product-active.css"/>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/test.js"></script>
+	</head>
+<body>
+	<header class="containter overflow">
+		<div class="logo left">
+			<img src="images/服装_03.png" />
+		</div>
+		<ul class="header-ul overflow right">
+			<li>
+				<a href="index.html" >首页</a>
+			</li>
+			<li>
+				<a href="brand.html">关于我们</a>
+			</li>
+			<li>
+				<a href="product1.1.html">产品展示</a>
+			</li>
+			<li>
+				<a href="team1.3.html">设计团队</a>
+			</li>
+			<li>
+				<a href="news2.html" class="active">新闻动态</a>
+			</li>
+		</ul>
+	</header>
+	<div class="show-img">
+		<img src="images/服装3级子网页2_02.png" />
+	</div>
+	<div class="news-content containter">
+		<div class="news-nav">
+			<p>
+				<span>首页：</span>
+				<span>&nbsp;新闻动态&nbsp;</span>
+				<span>&nbsp;&gt;&nbsp;</span>
+				<span></span>
+			</p>
+			<div class="news-title clear">
+				<p class="left">
+					<i></i>
+					<i></i>
+					新闻动态
+					<i></i>
+					<i></i>
+				</p>
+			</div>
+			<div class="news-text">
+				<!-- <span>美丽说，我把春天献给你</span>
+				<p>花开有期,时不待人,准备好行囊,就该出发了。既然是樱花季,怎么能少了樱花粉呢,浅浅的|浪漫中带着- 点收敛却多了- 份活力。JZ玖姿短款樱花粉色纸风衣灯笼袖口蓬出少女感,与丈青系带长裙,撞出别样清新。</p>
+				<div class="news-img">
+					<img src="images/服装3级子网页美丽说，我把春天献给你_03.png"/>
+				</div>
+				<div class="news-hr">
+					<i class="iconfont icon-ziyuan left"></i>
+					<hr class="overflow"/>
+				</div>
+				<p>长款纸风衣的显著优点在于足够轻薄飘逸,尤其侧边开衩之后,便具备了裙摆的功能，伫立树下,望着无数樱花倚着风劲离开枝头,一-个转身,衣裾飞扬,乘兴,与它们共舞一 曲吧。</p>
+				<div class="news-img">
+					<img src="images/服装3级子网页美丽说，我把春天献给你_07.png"/>
+				</div>
+				<div class="news-hr">
+					<i class="iconfont icon-ziyuan left"></i>
+					<hr class="overflow"/>
+				</div>
+				<p>知道吗,樱花可不止粉色-种，白的,红的,各有姿态, JZ玖姿红白解构印花连衣裙将樱花的纯粹与热烈集于-身 ,抽取式腰绳,既是装饰,亦能达到修饰身形的效果，漫步花路,优雅于心。</p>
+				<div class="news-img">
+					<img src="images/服装3级子网页美丽说，我把春天献给你_11.png"/>
+				</div> -->
+			</div>
+		</div>
+	</div>
+	<footer>
+		<span>COPYRIGHT◎2014 GIRDEAR ALL RIGHTS RESERVED版权所有:浙江印象实业股份有限公司浙ICP备15046969号</span>
+	</footer>
+	<script>
+		var name=Search();
+		
+		f3(decodeURIComponent(name),"news");
+		function f3(name, tableName) {
+			var ajax2 = new Ajax();
+			ajax2.xhr = ajax2.getXhr();
+			ajax2.open("POST", "test2.php");
+			ajax2.send(`tableName=${tableName}&dataBase=amx&limit=3&name=${name}`);
+			ajax2.onreadystatechange(() => {
+				try{
+					var dataS = JSON.parse(ajax2.xhr.responseText);
+				}catch(e){
+					Error();
+				}
+				var ParentDiv = document.querySelector(".news-text");
+				var fragment = document.createDocumentFragment();
+				var span=document.querySelector(".news-nav>p>span:last-child");
+					span.innerHTML=dataS[0][0];
+				var span=CreateElement("span");
+					span.innerHTML=dataS[0][0];
+					ParentDiv.appendChild(span);
+				for (var i = 0; i < dataS.length; i++) {
+					var p = CreateElement("p");
+						p.innerHTML=dataS[i][1];
+						fragment.appendChild(p);
+					var div=CreateElement("div");
+						div.className="news-img";
+					var img = CreateElement("img");
+						img.src=dataS[i][2];
+						div.appendChild(img);
+						fragment.appendChild(div);
+					if(i<2){
+						var div=CreateElement("div");
+							div.className="news-hr";
+						var I=CreateElement("i");
+							I.className="iconfont icon-ziyuan left";
+						var hr=CreateElement("hr");
+							hr.className="overflow"
+							div.appendChild(I);
+							div.appendChild(hr);
+						fragment.appendChild(div);
+					}
+						
+				}
+				ParentDiv.appendChild(fragment);
+			});
+		}
+	</script>
+</body>
+</html>

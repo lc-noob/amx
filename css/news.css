@@ -1,0 +1,37 @@
+.news-text{
+	text-align: center;
+	width:1016px;
+	margin-left: auto;
+}
+.news-text>span{
+	display: inline-block;
+	font-size:22px;
+	color:#333;
+	padding-bottom:15px;
+	border-bottom: 1px solid #999;
+	margin-bottom:6px;
+}
+.news-text>p{
+	font-size: 14px;
+	color:#747474;
+	line-height: 23px;
+	text-align: initial;
+	margin:32px 0;
+}
+.news-hr{
+	position: relative;
+}
+.news-hr>i{
+	position:absolute;
+	top:-6px;
+	left:0px;
+	font-size: 8px;
+	background:#fff;
+}
+.news-img{
+	margin:20px 0 50px;
+}
+.news-hr>hr{
+	margin-top:30px;
+	border:0.5px solid #666;
+}

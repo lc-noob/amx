@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>新闻动态</title>
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>
+		<link rel="stylesheet" type="text/css" href="css/news2.css"/>
+		<script type="text/javascript" src="js/test.js"></script>
+	</head>
+<body>
+	<header class="containter overflow">
+		<div class="logo left">
+			<img src="images/服装_03.png" />
+		</div>
+		<ul class="header-ul overflow right">
+			<li>
+				<a href="index.html" >首页</a>
+			</li>
+			<li>
+				<a href="brand.html">关于我们</a>
+			</li>
+			<li>
+				<a href="product1.1.html">产品展示</a>
+			</li>
+			<li>
+				<a href="team1.3.html">设计团队</a>
+			</li>
+			<li>
+				<a href="news2.html" class="active">新闻动态</a>
+			</li>
+		</ul>
+	</header>
+	<div class="show-img">
+		<img src="images/服装子网页2_02.png" />
+	</div>
+	<div class="news-content containter">
+		<div class="news-nav">
+			<p>
+				<span>首页：</span>
+				<span>&nbsp;新闻动态&nbsp;</span>
+			</p>
+			<div class="news-title clear">
+				<p class="left">
+					<i></i>
+					<i></i>
+					新闻动态
+					<i></i>
+					<i></i>
+				</p>
+			</div>
+			<div class="news2 news-text">
+				<div class="news2-content-div">
+					<!-- <div class="overflow div-son">
+						<div class="news2-time left">
+							<p>TWO</p>
+							<p>2018</p>
+						</div>
+						<div class=" overflow">
+							<p>春日里的连衣裙，仙气又撩人</p>
+							<p>又到人间四月天,这样花开的日子,不正是穿起裙装的好时节嘛。潮流的瞬息万变,让女人对于裙装的挑选变得越来越严苛了,可即便如此,总有一袭“仙女裙”能轻而易举偷得芳心,虽然“仙女”-词不免有着些许夸张成分,但它终究满足了属于女人的极致浪漫。</p>
+						</div>
+					</div>
+					<div class="overflow div-son">
+						<div class="news2-time left">
+							<p>THREE</p>
+							<p>2018</p>
+						</div>
+						<div class=" overflow">
+							<p>时髦客不爱裙装爱裤装，她们美得不一样</p>
+							<p>提起法国女人，优雅-词就会不由自主地映入脑海,记忆里，她们总穿着浪漫的裙装,化着精致的妆容,在巴黎街道缓缓走过,过着慵懒的生活可这并不是她们生活的全貌,而裙装也不是她们的必然选择,随着社会变迁,裤装逐渐走上历史舞台,就这样,法国女人的优雅里多了-份自由</p>
+						</div>
+					</div>
+					<div class="overflow div-son">
+						<div class="news2-time left">
+							<p>TWELVE</p>
+							<p>2017</p>
+						</div>
+						<div class=" overflow">
+							<p>夏日，吹起，运动风</p>
+							<p>在真正的夏天到来之前,全世界的女人都有一个共同理想,那就是瘦-点,再瘦-点，可健身这件"小事”实在无法随心所欲,三天打鱼两天晒网的锻炼怎么也抵不过一-杯奶茶带来的热量,是时候该另辟蹊径了,如果不能立刻减重,那,先显瘦吧。</p>
+						</div>
+					</div>
+					<div class="overflow div-son">
+						<div class="news2-time left">
+							<p>ELEVEN</p>
+							<p>2017</p>
+						</div>
+						<div class=" overflow">
+							<p>美丽说，我把春天献给你</p>
+							<p>三月,是属于樱花的季节。可樱花的花期极短,从开花到凋谢也不过- -周,所以,每当樱花盛开漫天飞舞的时候,总有如潮的赏花人追着花讯从南到北，去感受樱花那短暂却美丽的一生。除了以樱花闻名的日本,国内也有不少观赏胜地呢~</p>
+						</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<span>COPYRIGHT◎2014 GIRDEAR ALL RIGHTS RESERVED版权所有:浙江印象实业股份有限公司浙ICP备15046969号</span>
+	</footer>
+	<script>
+		f3("*","newsindex");
+		function f3(name, tableName) {
+			var ajax2 = new Ajax();
+			ajax2.xhr = ajax2.getXhr();
+			ajax2.open("POST", "test1.php");
+			ajax2.send(`tableName=${tableName}&dataBase=amx&limit=4&name=${name}`);
+			ajax2.onreadystatechange(() => {
+				try{
+					var dataS = JSON.parse(ajax2.xhr.responseText);
+				}catch(e){
+					Error();
+				}
+				var ParentDiv = document.querySelector(".news2-content-div");
+				var fragment = document.createDocumentFragment();
+				for (var i = 0; i < dataS.length; i++) {
+					var Div=CreateElement("div");
+						Div.className="overflow div-son";
+					var div=CreateElement("div");
+						div.className="news2-time left";
+					var p=CreateElement("p");
+						var arr=dataS[i][0].split("|");
+						p.innerHTML=arr[1];
+						div.appendChild(p);
+					var p=CreateElement("p");
+						p.innerHTML=arr[0];
+						div.appendChild(p);
+						Div.appendChild(div);
+					var div=CreateElement("div");
+						div.className="overflow";
+					var p=CreateElement("p");
+						p.innerHTML=dataS[i][1];
+						div.appendChild(p);
+					var p=CreateElement("p");
+						p.innerHTML=dataS[i][2];
+						div.appendChild(p);
+						Div.appendChild(div);
+						fragment.appendChild(Div);
+				}
+				ParentDiv.appendChild(fragment);
+			});
+		}
+		var parentDiv=document.querySelector(".news2-content-div");
+		parentDiv.onclick=e=>{
+			e=e||window.event;
+			var target=e.target||e.srcElement;
+			if(target.className != "news2-content-div")
+			{	
+				while(target.className != "overflow div-son"){
+						target=target.parentNode;
+					}
+				var title=target.querySelectorAll(".news2-time+div>p:first-child");
+				var name=title[0].innerHTML;
+				Url(name,"news1.1.html");
+			}
+		}
+		
+	</script>
+</body>
+</html>

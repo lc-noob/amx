@@ -1,0 +1,33 @@
+.team{
+	padding-bottom:1px;
+}
+.product-content-div>.team>p{
+	font-size:14px;
+	color:#666;
+	letter-spacing:1px;
+	margin:12px 0 20px;
+	width:680px;
+	text-align:justify;
+	line-height:22px;
+}
+.product-img-div{
+	width:1016px;
+}
+.team-img{
+	width:275px;
+	position:absolute;
+	top:0px;
+	right:0px;
+}
+.product-title:first-of-type{
+	margin-top:0;
+}
+.team-title{
+	display: block;
+}
+.product-content-div{
+	position:relative;
+}
+.product-title{
+	margin-top:24px;
+}

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>艾蜜雪</title>
+		<link rel="stylesheet" type="text/css" href="css/public.css"/>
+		<link rel="stylesheet" type="text/css" href="css/styles.css"/>
+		<link rel="stylesheet" type="text/css" href="css/styles-active.css"/>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/test.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+	</head>
+<body>
+	<header class="containter overflow">
+		<div class="logo left">
+			<img src="images/服装_03.png" />
+		</div>
+		<ul class="header-ul overflow right">
+			<li>
+				<a href="index.html" class="active">首页</a>
+			</li>
+			<li>
+				<a href="brand.html">关于我们</a>
+			</li>
+			<li>
+				<a href="product1.1.html">产品展示</a>
+			</li>
+			<li>
+				<a href="team1.3.html">设计团队</a>
+			</li>
+			<li>
+				<a href="news2.html">新闻动态</a>
+			</li>
+		</ul>
+	</header>
+	<div class="show-img">
+		<img src="images/图层-0_02.png" class="show"/>
+		<img src="images/服装3级子网页2_021.png" />
+		<img src="images/服装子网页4_021.png" />
+		<img src="images/图层-0_02.png"  class="active"/>
+		<ul class="carousel-ul">
+			<li data-dy="0"></li>
+			<li data-dy="1"></li>
+			<li data-dy="2" class="active"></li>
+		</ul>
+	</div>
+	<div class="containter">
+		<div class=" about clear">
+			<div class="about-content left">
+				<i></i>
+				<em></em>
+				<div class="i-copy about-i">
+					<span>
+						<i></i>关于我们<i></i>
+					</span>
+				</div>
+				<p>ABOUT&nbsp;US</p>
+				<p>  是一家集设计、生产、销售于体的全国著名女装股份制企业。在杭州下城区天堂经济开发区、下城区永华街和萧山国家经济开发区拥有近二十万多平米生产办公基地公司现有员工5000人左右,年生产、销售服装500多万件,销售业绩以每年40%的速度飞速增长。经过多年发展，公司已成为浙江女装行业的领军企业。</p>
+				<p>以打造中国第-淑女品牌为己任,全力倡导和推动淑女文化,将中国女性更优雅更甜美更淑女的品牌使命融入现代女性的生活中,为怀有淑女梦想的女孩搭建甜美动人。端庄优雅、时尚俏丽的精致舞台。</p>
+				<p>定位于追求优雅含蓄、融入温柔婉约、崇尚完美精致生活的都市白领女性,她们追求品质与时尚但绝不随波逐流,习惯被人关注和宠爱.她们的优雅气质让她们展现出属于玖姿女性独有的魅力风尚JZ玖姿传承意大利风情,采用精美绝伦的立体剪裁,花型组合与材质拼接,并选用欧洲当季最流行的高级面料将意 大利时装的精致优雅和浪漫热情完美融合在一 起。完美缔造出中国女性优雅、知性、时尚的服饰经典。</p>
+				<p>秉承“塑形、优雅、大气经典、时尚”的设计理念,运用优质上等的面料、精致的细节装饰、优雅的色彩和图案,加上时尚的设计和巧妙的剪裁，勾勒出女性的线条美感。妆点现代都市女性的多彩生活。</p>
+				<div class="about-i-reading">
+					<span data-url="brand.html">
+						<i></i>
+						<i></i>
+						READING
+						<i></i>
+						<i></i>
+					</span>
+				</div>
+			</div>
+			<div class="about-img left">
+				<div class="about-img-copy">
+					<img src="images/服装_09.png" />
+					<i></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="product">
+		<div class="product-img">
+			<img src="images/未标题-2.png" />
+		</div>
+		<div class="mask">
+			<div class="product-display containter">
+				<div class="i-copy product-i">
+					<span >
+						<i></i>产品展示<i></i>
+					</span>
+				</div>
+				<p>PRODUCT&nbsp;DISPLAY</p>
+				<div class="show-product">
+					<script type="text/javascript">
+						//产品展示
+						var ajax=new Ajax();
+						ajax.xhr=ajax.getXhr();
+						ajax.open("POST","test.php");
+						ajax.send("tableName=indexproduct&dataBase=amx&limit=4");
+						ajax.onreadystatechange(f1);
+						function f1(){
+							var DIV=document.querySelector(".show-product");
+							try{
+								var dataS=JSON.parse(ajax.xhr.responseText);
+							}catch(e){
+								Error();
+							}
+								for(var i=0;i<dataS.length;i++){
+									if(i%2==0){
+										var divParent=CreateElement("div");
+										divParent.className="show-product-t overflow";
+									}
+									var divSon=CreateElement("div");
+										divSon.className="show-product-children left overflow";
+									var div=CreateElement("div");
+										div.className="show-product-mask";
+										divSon.appendChild(div);
+									var div=CreateElement("div");
+										if(i<2){
+											div.className="product-showimg left";
+										}else{
+											div.className="product-showimg right";
+										}
+									var img=CreateElement("img");
+										img.src=dataS[i][0];
+										div.appendChild(img);
+										divSon.appendChild(div);
+									var div=CreateElement("div");
+										div.className="show-product-content overflow";
+									var p=CreateElement("p");
+										p.innerHTML=dataS[i][1];
+										div.appendChild(p);
+									var p=CreateElement("p");
+										p.innerHTML=dataS[i][2];
+										div.appendChild(p);
+										divSon.appendChild(div);
+										divParent.appendChild(divSon);
+									if(i%2==0){
+										DIV.appendChild(divParent);
+									}
+								}
+							var DIV=document.querySelectorAll(".show-product-children");
+								for(var i=0;i<DIV.length;i++){
+									i%2==0 ? DIV[i].className="show-product-children left overflow" : DIV[i].className="show-product-children right overflow";
+								}
+								
+						}
+					</script>
+				<!-- 	<div class="show-product-t overflow">
+						<div class="show-product-children left overflow">
+							<div class="show-product-mask"></div>
+							<div class="product-showimg left">
+								<img src="images/服装_14.png" />
+							</div>
+							<div class="show-product-content overflow">
+								<p>简约风格</p>
+								<p>服装几乎不要任何装饰，信奉简约主义的服装设计师擅长做减法.</p>
+							</div>
+						</div>
+						<div class="show-product-children right overflow">
+							<div class="show-product-mask"></div>
+							<div class="product-showimg left">
+								<img src="images/服装_16.png" />
+							</div>
+							<div class="show-product-content overflow">
+								<p>韩版风格</p>
+								<p>舍弃了简单的色调堆砌，而是通过特别的明暗对比来彰显品味.</p>
+							</div>
+						</div>
+					</div>
+					<div class="show-product-t overflow">
+						<div class="show-product-children left overflow">
+							<div class="show-product-mask"></div>
+							<div class="product-showimg right">
+								<img src="images/服装_21.png" />
+							</div>
+							<div class="show-product-content overflow">
+								<p>百搭风格</p>
+								<p>以搭配各类衣服，很实用的单件服饰与其他款式，颜色的服饰均能产生一定的效果.</p>
+							</div>
+						</div>
+						<div class="show-product-children right overflow">
+							<div class="show-product-mask"></div>
+							<div class="product-showimg right">
+								<img src="images/服装_24.png" />
+							</div>
+							<div class="show-product-content overflow">
+								<p>KOREAN&nbsp;STYLE</p>
+								<p>服装几乎不要任何装饰，信奉简约主义的服装设计师擅长做减法.</p>
+							</div>
+						</div>
+					</div> -->
+				</div>
+				<div class="about-i-reading product-i-rengding">
+					<span data-url="product1.1.html">
+						<i></i>
+						<i></i>
+						READING
+						<i></i>
+						<i></i>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="team containter">
+		<div class="i-copy product-i team-i">
+			<span>
+				<i></i>设计团队<i></i>
+			</span>
+		</div>
+		<p>DESIGN&nbsp;TEAM</p>
+		<div class="team-content">
+			<script type="text/javascript">
+				
+				//团队展示
+				var ajax1=new Ajax();
+				ajax1.xhr=ajax1.getXhr();
+				ajax1.open("POST","test.php");
+				ajax1.send("tableName=indexteam&dataBase=amx&limit=4");
+				ajax1.onreadystatechange(f1);
+				function f1(){
+					var DIV=document.querySelector(".team-content");
+					try{
+						var dataS=JSON.parse(ajax1.xhr.responseText);
+					}catch(e){
+						Error();
+					}
+						for(var i=0;i<dataS.length;i++){
+							var divSon=CreateElement("div");
+								divSon.className="team-content-div";
+							var div=CreateElement("div");
+								div.className="team-img";
+							var img=CreateElement("img");
+							var arr=[];
+								arr=dataS[i][0].split("|");
+								img.src=arr[0];
+								div.appendChild(img);
+							var img=CreateElement("img");
+								img.src=arr[1];
+								div.appendChild(img);
+								divSon.appendChild(div);
+							var div=CreateElement("div");
+							var span=CreateElement("span");
+								span.innerHTML=dataS[i][1];
+								div.appendChild(span);
+								divSon.appendChild(div);
+							var p=CreateElement("p");
+								p.innerHTML=dataS[i][2];
+								divSon.appendChild(p);
+							DIV.appendChild(divSon);
+						}
+				}
+			</script>
+			<!-- <div class="team-content-div">
+				<div class="team-img">
+					<img src="images/服装_30.png" />
+					<img src="images/服装_301.png" />
+				</div>
+				<div>
+					<span>刘清扬</span>
+				</div>
+				<p>生在北京，长在香港, 18岁留学英国就读于(英国圣马丁艺术设计学院)(面料设计)专业。</p>
+			</div>
+			<div class="team-content-div">
+				<div class="team-img">
+					<img src="images/服装_321.png" />
+					<img src="images/服装_32.png" />
+				</div>
+				<div>
+					<span>韩璐璐</span>
+				</div>
+				<p>擅长将典雅的东方气质与利落的西式剪裁相融和,强调女性精致.优雅的特质</p>
+			</div>
+			<div class="team-content-div">
+				<div class="team-img">
+					<img src="images/服装_34.png" />
+					<img src="images/服装_341.png" />
+				</div>
+				<div>
+					<span>周翔宇</span>
+				</div>
+				<p>出生于1982年，毕业于DEN HAAG服装学院，曾经攻读工业造型设计并在AMSTERDAM自由大学修读荷兰语。</p>
+			</div>
+			<div class="team-content-div">
+				<div class="team-img">
+					<img src="images/服装_36.png" />
+					<img src="images/服装_361.png" />
+				</div>
+				<div>
+					<span>罗峥</span>
+				</div>
+				<p>1970年6月出生于北京，1991年深圳大学国际金融贸易专业毕业。</p>
+			</div> -->
+		
+		</div>
+	</div>
+	<div class="show-img1">
+		<img src="images/服装_42.png" />
+	</div>
+	<div class="news containter">
+		<div class="i-copy product-i news-i">
+			<span>
+				<i></i>新闻动态<i></i>
+			</span>
+		</div>
+		<p class="news-p">NEWS&nbsp;INFORMATION</p>
+		<div class="news-div">
+			<div class="news-content-div overflow">
+				<script type="text/javascript">
+					//新闻展示
+					var ajax2=new Ajax();
+					ajax2.xhr=ajax2.getXhr();
+					ajax2.open("POST","test.php");
+					ajax2.send("tableName=indexnews&dataBase=amx&limit=4");
+					ajax2.onreadystatechange(f1);
+					function f1(){
+						var DIV=document.querySelector(".news-content-div");
+						try{
+							var dataS=JSON.parse(ajax2.xhr.responseText);
+						}catch(e){
+							Error();
+						}
+							for(var i=0;i<dataS.length;i++){
+								if(i%2==0){
+									var divParent=CreateElement("div");
+										divParent.className="news-content-div-t left containter overflow";
+								}
+								var divSon=CreateElement("div");
+								if(i%2==0){
+									divSon.className="left";
+								}else{
+									divSon.className="right";
+								}
+								var div=CreateElement("div");
+									div.className="news-time left";
+								var p=CreateElement("p");
+									var arr=[];
+									arr=dataS[i][0].split("|");
+									p.innerHTML=arr[1];
+									div.appendChild(p);
+								var p=CreateElement("p");
+									p.innerHTML=arr[0];
+									div.appendChild(p);
+									divSon.appendChild(div);
+									
+								var div=CreateElement("div");
+									div.className="news-text overflow";
+								var p=CreateElement("p");
+									p.innerHTML=dataS[i][1];
+									div.appendChild(p);
+								var p=CreateElement("p");
+									p.innerHTML=dataS[i][2];
+									div.appendChild(p);
+									
+									divSon.appendChild(div);
+								divParent.appendChild(divSon);
+								if(i%2==0){
+									DIV.appendChild(divParent);
+								}
+							}
+					}
+				</script>
+				<!-- <div class="news-content-div-t left containter overflow">
+					<div class="left">
+						<div class="news-time left">
+							<p>TWO</p>
+							<p>2018</p>
+						</div>
+						<div class="news-text overflow">
+							<p>EIMICHS获数百万元天使轮融资</p>
+							<p> EIMICHS已完成数百万元天使轮融资,由天使湾领投。燕清联合旗下平视资本跟投。据悉，本轮融资资金将主要用于品牌推广和渠道拓展。目前中国有4600万肥群女性,数量已超美国成为世界第一。</p>
+						</div>
+					</div>
+					<div class="right">
+						<div class="news-time left">
+							<p>THREE</p>
+							<p>2018</p>
+						</div>
+						<div class="news-text overflow">
+							<p>新款EIMICHS艾蜜雪女装</p>
+							<p> EIMICHS已完成数百万元天使轮融资,由天使湾领投。燕清联合旗下平视资本跟投。据悉，本轮融资资金将主要用于品牌推广和渠道拓展。目前中国有4600万肥群女性,数量已超美国成为世界第一。</p>
+						</div>
+					</div>
+				</div>
+				<div class="news-content-div-t left containter overflow">
+					<div class="left">
+						<div class="news-time left">
+							<p>TWELVE</p>
+							<p>2017</p>
+						</div>
+						<div class="news-text overflow">
+							<p>冬季新款羽绒服</p>
+							<p> EIMICHS已完成数百万元天使轮融资,由天使湾领投。燕清联合旗下平视资本跟投。据悉，本轮融资资金将主要用于品牌推广和渠道拓展。目前中国有4600万肥群女性,数量已超美国成为世界第一。</p>
+						</div>
+					</div>
+					<div class="right">
+						<div class="news-time left">
+							<p>ELEVEN</p>
+							<p>2017</p>
+						</div>
+						<div class="news-text overflow">
+							<p>冬季新款服装</p>
+							<p> EIMICHS已完成数百万元天使轮融资,由天使湾领投。燕清联合旗下平视资本跟投。据悉，本轮融资资金将主要用于品牌推广和渠道拓展。目前中国有4600万肥群女性,数量已超美国成为世界第一。</p>
+						</div>
+					</div>
+				</div> -->
+			</div>
+			<div class="about-i-reading news-i-rengding">
+				<span data-url="news2.html">
+					<i></i>
+					<i></i>
+					READING
+					<i></i>
+					<i></i>
+				</span>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<span>COPYRIGHT◎2014 GIRDEAR ALL RIGHTS RESERVED版权所有:浙江印象实业股份有限公司浙ICP备15046969号</span>
+	</footer>
+</body>
+</html>

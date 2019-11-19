@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>404</title>
+		<style>
+			.containter{
+				position: relative;
+				width: 1153px;
+				height:884px;
+				margin: 0 auto;
+				background: url("images/404.png") no-repeat center center;
+			}
+			div{
+				position:absolute;
+				top:50%;
+				margin-top:-290px;
+				width:136px;
+				color:#333;
+			}
+			div.l{
+				left:100px;
+				cursor: pointer;
+			}
+			div.r{
+				cursor: pointer;
+				right:100px;
+			}
+			div>h1{
+				font-size: 188px;
+				font-weight: 550;
+			}
+			div>p{
+				text-align: center;
+				font-size: 30px;
+				border: 1px solid #333;
+				line-height: 50px;
+			}
+		</style>
+	</head>
+<body>
+	<div class="containter">
+		<div class="l">
+			<h1>4</h1>
+			<p>返回首页</p>
+		</div>
+		<div class="r">
+			<h1>4</h1>
+			<p>点击刷新</p>
+		</div>
+	</div>
+	<script type="text/javascript" src="js/test.js"></script>
+	<script>
+		var parentBox=document.querySelector("div.containter");
+		parentBox.onclick=e=>{
+			e=e||window.event;
+			var target=e.target||e.srcElement;
+			if(target.nodeName=="P"){
+				target.parentNode.className=="l" ? Index("index.html") : "";
+			}
+		}
+	</script>
+</body>
+</html>
